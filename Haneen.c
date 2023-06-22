@@ -86,11 +86,11 @@ void swap(stack_t **stack, unsigned int line_number)
 #include "monty.h"
 
 /**
- * f_add - Adds the top two elements of the stack.
+ * add - Adds the top two elements of the stack.
  * @head: Stack head.
  * @counter: Line number.
  */
-void f_add(stack_t **head, unsigned int counter)
+void add(stack_t **head, unsigned int counter)
 {
         if (*head == NULL || (*head)->next == NULL)
         {
@@ -102,7 +102,7 @@ void f_add(stack_t **head, unsigned int counter)
         }
 
         (*head)->next->n += (*head)->n;
-        f_pop(head, counter);
+        pop(head, counter);
 }
 
 
@@ -115,7 +115,7 @@ void f_add(stack_t **head, unsigned int counter)
   *@counter: line_number
   *Return: no return
  */
-void f_nop(stack_t **head, unsigned int counter)
+void nop(stack_t **head, unsigned int counter)
 {
 	(void) counter;
 	(void) head;
