@@ -1,10 +1,12 @@
 #ifndef MONTY_H
 #define MONTY_H
-
 #include <stdio.h>
 #include <stdlib.h>
-
-/* Data Structures */
+#include <sys/types.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -28,33 +30,19 @@ typedef struct stack_s
  * @f: function to handle the opcode
  *
  * Description: opcode and its function
- * for stack, queues, LIFO, FIFO
+ * for stack, queues, LIFO, FIFO Holberton project
  */
 typedef struct instruction_s
 {
-    char *opcode;
-    void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/* Function Prototypes */
-
-/* main.c */
-int main(int argc, char *argv[]);
-
-/* interpreter.c */
-void interpret_file(char *filename);
-
-/* parser.c */
-void parse_line(char *line, unsigned int line_number, stack_t **stack);
-
-/* stack_ops.c */
+/* Function prototypes */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-
-/* utility.c */
-void error_usage(void);
-void error_file(char *filename);
-void error_instruction(unsigned int line_number, char *opcode);
-void error_malloc(void);
+int is_number(char *str);
+void execute_opcode(char *opcode, stack_t **stack, unsigned int line_number);
+void free_stack(stack_t *stack);
 
 #endif /* MONTY_H */
